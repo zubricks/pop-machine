@@ -5,12 +5,14 @@ type PurchaseResult =
   | { success: false; reason: 'out_of_stock' | 'not_found' }
 
 export async function purchaseProduct(payload: Payload, productId: string): Promise<PurchaseResult> {
-  const product = await payload.findByID({
-    collection: 'products',
-    id: productId,
-  })
+  let product
 
-  if (!product) {
+  try {
+    product = await payload.findByID({
+      collection: 'products',
+      id: productId,
+    })
+  } catch {
     return { success: false, reason: 'not_found' }
   }
 

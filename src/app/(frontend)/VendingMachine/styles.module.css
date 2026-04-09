@@ -1,0 +1,373 @@
+/* machine shell */
+.machine {
+  width: 480px;
+  height: 680px;
+  background: #2c2c2c;
+  border-radius: 12px 12px 6px 6px;
+  border: 3px solid #1a1a1a;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.8),
+    0 0 0 1px #111;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.machine.shaking {
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-6px);
+  }
+  30% {
+    transform: translateX(6px);
+  }
+  45% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-3px);
+  }
+  90% {
+    transform: translateX(3px);
+  }
+}
+
+/* top panel */
+.topPanel {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* brand panel */
+.brandPanel {
+  width: 58%;
+  background: linear-gradient(160deg, #cc0000 0%, #e8001a 40%, #ff1a1a 70%, #cc0000 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-right: 3px solid #1a1a1a;
+}
+
+.brandPanel::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.brandPanel::after {
+  content: '';
+  position: absolute;
+  bottom: -80px;
+  right: -40px;
+  width: 220px;
+  height: 220px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.brandEnjoy {
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+  z-index: 1;
+}
+
+
+.brandLogo {
+  width: 160px;
+  height: auto;
+  z-index: 1;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.25));
+}
+
+.brandSub {
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 2px;
+  margin-top: 4px;
+  z-index: 1;
+}
+
+/* control panel */
+.controlsPanel {
+  width: 42%;
+  background: #252525;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 14px;
+  gap: 12px;
+}
+
+/* coin slot */
+.coinAcceptor {
+  background: #1a1a1a;
+  border-radius: 6px;
+  padding: 10px;
+  border: 1px solid #111;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.coinLabel {
+  font-size: 9px;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.coinSlot {
+  background: linear-gradient(180deg, #333 0%, #444 50%, #333 100%);
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition:
+    background 0.1s,
+    transform 0.1s;
+  user-select: none;
+  width: 100%;
+}
+
+.coinSlot:hover {
+  background: linear-gradient(180deg, #3a3a3a 0%, #4a4a4a 50%, #3a3a3a 100%);
+}
+
+.coinSlot:active {
+  transform: scale(0.97);
+  background: linear-gradient(180deg, #2a2a2a 0%, #3a3a3a 50%, #2a2a2a 100%);
+}
+
+.coinSlotLabel {
+  font-size: 10px;
+  color: #aaa;
+  letter-spacing: 0.5px;
+}
+
+.coinSlotIcon {
+  font-size: 16px;
+}
+
+/* display */
+.display {
+  background: #1a2a1a;
+  border: 1px solid #0a1a0a;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #44ff44;
+  text-shadow: 0 0 8px rgba(68, 255, 68, 0.6);
+  letter-spacing: 1px;
+  text-align: center;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+  min-height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.display.soldOut {
+  color: #ff4444;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.6);
+  animation: blink 0.3s ease-in-out 3;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+/* pop buttons */
+.buttonGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  flex: 1;
+}
+
+.sodaButton {
+  background: #0e0e0e;
+  border: 2px solid color-mix(in srgb, var(--soda-color, #555) 50%, transparent);
+  border-radius: 6px;
+  padding: 8px 6px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition:
+    transform 0.1s,
+    box-shadow 0.15s;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 8px color-mix(in srgb, var(--soda-color, #555) 35%, transparent),
+    inset 0 0 12px color-mix(in srgb, var(--soda-color, #555) 20%, transparent);
+}
+
+.sodaButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--soda-color, #555);
+  opacity: 0.22;
+  border-radius: 4px;
+}
+
+.sodaButton:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--soda-color, #555) 60%, transparent),
+    inset 0 0 16px color-mix(in srgb, var(--soda-color, #555) 30%, transparent);
+}
+
+.sodaButton:active:not(.outOfStock) {
+  transform: scale(0.95) translateY(2px);
+}
+
+.sodaButton.outOfStock {
+  opacity: 0.35;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.sodaButton.outOfStock::after {
+  content: 'SOLD OUT';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: bold;
+  color: #ff4444;
+  letter-spacing: 1px;
+  border-radius: 4px;
+}
+
+.sodaColorDot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  flex-shrink: 0;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.sodaName {
+  font-size: 11px;
+  color: #eee;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sodaPrice {
+  font-size: 11px;
+  color: #bbb;
+  font-weight: 600;
+}
+
+.sodaStock {
+  font-size: 10px;
+  color: #999;
+}
+
+
+/* tray */
+.tray {
+  height: 80px;
+  background: linear-gradient(180deg, #1a1a1a 0%, #222 100%);
+  border-top: 3px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.trayOpening {
+  width: 80%;
+  height: 32px;
+  background: #111;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid #0a0a0a;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── Can Animation ──────────────────────────────────────── */
+.can {
+  width: 28px;
+  height: 44px;
+  border-radius: 4px 4px 3px 3px;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: dropCan 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  box-shadow:
+    inset 2px 0 4px rgba(255, 255, 255, 0.2),
+    inset -2px 0 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes dropCan {
+  0% {
+    top: -60px;
+  }
+  60% {
+    top: 10px;
+  }
+  75% {
+    top: 2px;
+  }
+  88% {
+    top: 8px;
+  }
+  100% {
+    top: 4px;
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

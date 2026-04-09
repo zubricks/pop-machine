@@ -8,7 +8,7 @@ import sharp from 'sharp'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Products } from './collections/Products'
-import { purchaseProduct } from './lib/purchaseProduct.js'
+import { purchaseProduct } from './lib/purchaseProduct'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)

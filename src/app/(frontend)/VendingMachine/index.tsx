@@ -122,7 +122,7 @@ export default function VendingMachine({ initialProducts }: Props) {
             <span className={styles.brandSub}>POP</span>
           </div>
 
-          <div className={styles.controlsPanel}>
+          <div className={styles.controlPanel}>
             <div className={styles.coinAcceptor}>
               <div className={styles.coinLabel}>Coin Acceptor</div>
               <button className={styles.coinSlot} onClick={insertCoin}>
@@ -142,10 +142,7 @@ export default function VendingMachine({ initialProducts }: Props) {
                 return (
                   <button
                     key={product.id}
-                    className={[
-                      styles.sodaButton,
-                      isOut ? styles.outOfStock : '',
-                    ].join(' ')}
+                    className={[styles.sodaButton, isOut ? styles.outOfStock : ''].join(' ')}
                     style={{ '--soda-color': product.color } as React.CSSProperties}
                     onClick={() => selectSoda(product)}
                   >

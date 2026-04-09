@@ -1,11 +1,12 @@
-import { getPayload, Payload } from 'payload'
+import { getPayload } from 'payload'
+import type { Payload } from 'payload'
 import config from '@/payload.config'
 import { describe, it, beforeAll, afterEach, expect } from 'vitest'
 
-let payload: Payload
-const createdIDs: string[] = []
-
 describe('Products collection', () => {
+  let payload: Payload
+  const createdIDs: string[] = []
+
   beforeAll(async () => {
     const payloadConfig = await config
     payload = await getPayload({ config: payloadConfig })
